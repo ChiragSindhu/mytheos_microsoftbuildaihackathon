@@ -1,5 +1,5 @@
 # Team Type: Individual
-# Team Member:
+# Team Member: Chirag)'s Team
 - Chirag Sindhu
 - business.chiragsindhu@gmail.com
 
@@ -8,16 +8,6 @@
 MYTHEOS (Multi-Agent Yielding Traceback, Hypothesis, Evaluation, Optimization & Solutions) is an autonomous debugging platform that leverages a swarm of specialized AI agents to investigate, diagnose, and repair software defects.
 
 Modern software teams spend significant engineering effort reproducing bugs, analyzing stack traces, understanding code dependencies, identifying root causes, generating fixes, and validating solutions. While current AI coding assistants can generate snippets of code, they often lack structured reasoning, verification mechanisms, and collaborative workflows required for reliable debugging.
-
-MYTHEOS introduces a multi-agent architecture where each agent specializes in a specific phase of the debugging lifecycle:
-• Planner Agent – Analyzes the repository, issue description, and error logs to create a debugging strategy.
-• Reproduction Agent – Attempts to reproduce failures through automated execution and test discovery.
-• Code Analysis Agent – Examines code structure, dependency graphs, execution paths, and affected components.
-• Context Agent – Retrieves relevant documentation, commit history, pull requests, and related issues.
-• Root Cause Agent – Synthesizes evidence from other agents to determine the most probable cause of failure.
-• Fix Agent – Generates targeted code modifications and remediation strategies.
-• Test Agent – Creates regression tests and validates generated fixes.
-• Review Agent – Evaluates security, maintainability, performance implications, and code quality before finalizing recommendations.
 
 The agents communicate through a centralized orchestration layer, allowing evidence sharing, iterative validation, and collaborative decision-making. Instead of relying on a single AI response, MYTHEOS performs structured investigation similar to how experienced software engineering teams debug complex production issues.
 
@@ -37,6 +27,8 @@ Output:
 The solution aims to reduce debugging time, improve software reliability, and demonstrate how agent swarms can automate complex engineering workflows through collaborative intelligence.
 
 ## Architecture
+
+```text
 GitHub Repository + Error Logs
               │
               ▼
@@ -62,6 +54,35 @@ Reproduction  Code      Context
                 │
                 ▼
       Bug Report + Pull Request
+```
+
+### Agent Responsibilities
+
+| Agent               | Responsibility                                                                      |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| Planner Agent       | Creates a debugging strategy from the repository, issue description, and error logs |
+| Reproduction Agent  | Reproduces failures and discovers failing execution paths                           |
+| Code Analysis Agent | Analyzes code structure, dependencies, and execution flow                           |
+| Context Agent       | Retrieves commit history, pull requests, documentation, and related issues          |
+| Root Cause Agent    | Identifies and validates the most probable cause of failure                         |
+| Fix Agent           | Generates targeted code modifications and remediation plans                         |
+| Test Agent          | Creates regression tests and validates generated fixes                              |
+| Review Agent        | Performs final quality, security, and maintainability checks                        |
+
+### Workflow
+
+1. The user provides a GitHub repository and error logs.
+2. The Planner Agent generates an investigation strategy.
+3. Reproduction, Code Analysis, and Context Agents work in parallel to gather evidence.
+4. The Root Cause Agent synthesizes findings and determines the underlying issue.
+5. The Fix Agent generates a proposed solution.
+6. The Test Agent validates the fix and creates regression tests.
+7. The Review Agent performs a final verification pass.
+8. MYTHEOS produces a bug report, code patch, regression tests, and a pull-request-ready solution.
+
+```
+```
+
 
 ## Microsoft AI Stack
 MYTHEOS leverages Microsoft technologies to orchestrate autonomous debugging workflows:
