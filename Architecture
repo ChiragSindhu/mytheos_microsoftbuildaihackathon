@@ -1,0 +1,21 @@
+GitHub Repo + Error Logs
+        │
+        ▼
+  Planner Agent
+        │
+┌───────┼───────┐
+▼       ▼       ▼
+Repro  Code  Context
+Agent  Agent  Agent
+│       │       │
+└───────┼───────┘
+        ▼
+Root Cause Agent
+        ▼
+   Fix Agent
+        ▼
+  Test Agent
+        ▼
+ Review Agent
+        ▼
+Pull Request + Report

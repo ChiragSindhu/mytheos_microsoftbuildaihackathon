@@ -1,0 +1,55 @@
+CLI
+Bash
+
+# Debug from error log file
+python -m cli.main debug \
+  --repo https://github.com/user/repo \
+  --error-log error.txt
+
+# Debug with inline error
+python -m cli.main debug \
+  --repo https://github.com/user/repo \
+  --error-text "TypeError: Cannot read property 'map' of undefined"
+
+# Check provider status
+python -m cli.main providers
+
+python API
+from src.core.orchestrator import MYTHEOSOrchestrator
+import asyncio
+
+async def debug_example():
+    orchestrator = MYTHEOSOrchestrator()
+    
+    result = await orchestrator.debug(
+        repo_url="https://github.com/user/repo",
+        error_log=open("error.txt").read(),
+        repo_path="./local-repo",
+        language="python"
+    )
+    
+    print(result['bug_report'])
+    print(result['pull_request'])
+
+asyncio.run(debug_example())
+
+
+Test Single File
+Bash
+
+# Easy bug
+python -m cli.main test-file examples/buggy_files/easy_bug.py
+
+python -m cli.main test-file "D:\chirag projects\mythos\examples\buggy_files\easy_bug.py"
+
+# Medium bug
+python -m cli.main test-file examples/buggy_files/medium_bug.py
+
+# Hard bug
+python -m cli.main test-file examples/buggy_files/hard_bug.py
+
+# Test without auto-run
+python -m cli.main test-file my_script.py --no-auto-run
+
+# Test with verbose output
+python -m cli.main test-file buggy.py -v

@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/app/src/app.py", line 16, in get_user_orders
+    order_list = [order.to_dict() for order in orders]
+TypeError: 'NoneType' object is not iterable
+
+Request: GET /api/users/999/orders
+User-Agent: Mozilla/5.0
+Timestamp: 2024-01-15 14:32:10
+
+Additional Context:
+- User ID 999 does not exist in database
+- OrderService.get_orders_by_user() returned None
+- Expected behavior: Return empty list or proper error message
+
+Stack trace:
+  File "flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "src/app.py", line 16, in get_user_orders
+    order_list = [order.to_dict() for order in orders]
