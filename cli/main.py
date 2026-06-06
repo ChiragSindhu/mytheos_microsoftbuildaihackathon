@@ -82,9 +82,9 @@ def test_file(file_path, auto_run, test_file, verbose):
     Test a local Python file for bugs.
     
     Examples:
-        debug-swarm test-file buggy_code.py
-        debug-swarm test-file app.py --test-file tests/test_app.py
-        debug-swarm test-file script.py --no-auto-run
+        mytheos test-file buggy_code.py
+        mytheos test-file app.py --test-file tests/test_app.py
+        mytheos test-file script.py --no-auto-run
     """
     console.print(Panel.fit(
         f"[bold blue] Mytheos Testing Local File[/bold blue]\n"
