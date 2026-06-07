@@ -31,7 +31,7 @@ class BaseLLMProvider(ABC):
         self,
         messages: List[Message],
         temperature: float = 0.7,
-        max_tokens: int = 4000,
+        max_tokens: int = 2048,
         **kwargs
     ) -> LLMResponse:
         """Generate completion."""
@@ -42,7 +42,7 @@ class BaseLLMProvider(ABC):
         self,
         messages: List[Message],
         temperature: float = 0.7,
-        max_tokens: int = 4000,
+        max_tokens: int = 2048,
         **kwargs
     ):
         """Stream completion."""

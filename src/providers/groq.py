@@ -14,7 +14,7 @@ class GroqProvider(BaseLLMProvider):
         self,
         messages: List[Message],
         temperature: float = 0.7,
-        max_tokens: int = 4000,
+        max_tokens: int = 2048,
         **kwargs
     ) -> LLMResponse:
         """Generate completion using Groq."""
@@ -44,7 +44,7 @@ class GroqProvider(BaseLLMProvider):
         self,
         messages: List[Message],
         temperature: float = 0.7,
-        max_tokens: int = 4000,
+        max_tokens: int = 2048,
         **kwargs
     ):
         """Stream completion using Groq."""

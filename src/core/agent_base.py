@@ -15,7 +15,7 @@ class BaseAgent(ABC):
         name: str,
         llm_provider: Optional[BaseLLMProvider] = None,
         temperature: float = 0.7,
-        max_tokens: int = 4000
+        max_tokens: int = 2048
     ):
         self.name = name
         self.llm_provider = llm_provider or get_llm_provider()
