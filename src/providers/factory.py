@@ -2,6 +2,7 @@
 from typing import Optional
 from .base import BaseLLMProvider
 from .groq import GroqProvider
+from .azure_openai import AzureOpenAIProvider
 from config.settings import settings
 
 class ProviderFactory:
@@ -9,6 +10,7 @@ class ProviderFactory:
     
     _providers = {
         "groq": GroqProvider,
+        "azure_openai": AzureOpenAIProvider,
     }
     
     @classmethod
@@ -34,6 +36,11 @@ class ProviderFactory:
         if provider_name == "groq":
             api_key = api_key or settings.GROQ_API_KEY
             model = model or settings.GROQ_MODEL
+        elif provider_name == "azure_openai":
+            api_key = api_key or settings.AZURE_OPENAI_API_KEY
+            model = model or settings.AZURE_OPENAI_DEPLOYMENT
+            kwargs["azure_endpoint"] = kwargs.get("azure_endpoint") or settings.AZURE_OPENAI_ENDPOINT
+            kwargs["api_version"] = kwargs.get("api_version") or settings.AZURE_OPENAI_API_VERSION
         elif provider_name == "openai":
             api_key = api_key or settings.OPENAI_API_KEY
             model = model or settings.OPENAI_MODEL

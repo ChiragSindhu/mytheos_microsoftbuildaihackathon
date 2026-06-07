@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mytheos SSE Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #events { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
+        .event { margin: 5px 0; padding: 5px; background: #f0f0f0; }
+        .progress { background: #e3f2fd; }
+        .complete { background: #c8e6c9; }
+        .error { background: #ffcdd2; }
+    </style>
+</head>
+<body>
+    <h1>🐛 Mytheos SSE Test</h1>
+    
+    <button onclick="startDebugging()">Start Debugging</button>
+    <button onclick="clearEvents()">Clear</button>
+    
+    <h3>Events:</h3>
+    <div id="events"></div>
+
+    <script>
+        const API_URL = 'http://localhost:8000';
+        let eventSource = null;
+
+        async function startDebugging() {
+            const code = `
+def calculate_total(prices):
+    total = 0
+    for price in prices:
+        total = total + price
+    return total
+
+prices = [10, 20, "30", 40]
+print(calculate_total(prices))
+            `.trim();
+
+            // Start debugging
+            const response = await fetch(`${API_URL}/api/debug/file`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    code_content: code,
+                    error_log: '',
+                    language: 'python',
+                    auto_run: true
+                })
+            });
+
+            const { session_id, sse_url } = await response.json();
+            addEvent('info', `Session started: ${session_id}`);
+
+            // Connect to SSE
+            eventSource = new EventSource(`${API_URL}${sse_url}`);
+
+            eventSource.addEventListener('progress', (e) => {
+                const data = JSON.parse(e.data);
+                addEvent('progress', `Progress: ${data.phase} - ${data.message}`);
+            });
+
+            eventSource.addEventListener('complete', (e) => {
+                const data = JSON.parse(e.data);
+                addEvent('complete', 'Debugging complete!');
+                eventSource.close();
+            });
+
+            eventSource.addEventListener('error', (e) => {
+                addEvent('error', 'Error occurred');
+                eventSource.close();
+            });
+        }
+
+        function addEvent(type, message) {
+            const eventsDiv = document.getElementById('events');
+            const eventDiv = document.createElement('div');
+            eventDiv.className = `event ${type}`;
+            eventDiv.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            eventsDiv.appendChild(eventDiv);
+            eventsDiv.scrollTop = eventsDiv.scrollHeight;
+        }
+
+        function clearEvents() {
+            document.getElementById('events').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
