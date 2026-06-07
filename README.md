@@ -26,6 +26,9 @@ Output:
 
 The solution aims to reduce debugging time, improve software reliability, and demonstrate how agent swarms can automate complex engineering workflows through collaborative intelligence.
 
+
+# Mytheos Frontend: [Multi-Agent Yielding Traceback, Hypothesis, Evaluation, Optimization & Solutions](https://github.com/ChiragSindhu/mytheos_frontend)
+
 ## Architecture
 
 ```text
