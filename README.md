@@ -72,6 +72,19 @@ Reproduction  Code      Context
 | Test Agent          | Creates regression tests and validates generated fixes                              |
 | Review Agent        | Performs final quality, security, and maintainability checks                        |
 
+### Submission Details
+
+| Item                | Link                                                              |
+| -----------------   | ----------------------------------------------------------------- |
+| Live Demo           | https://nice-field-0b1a01600.7.azurestaticapps.net                |
+| Demo Video          | https://youtu.be/QkcsxBdOckE                                      |
+| GitHub Repository   | https://github.com/ChiragSindhu/mytheos_microsoftbuildaihackathon |
+| Frontend Repository | https://github.com/ChiragSindhu/mytheos_frontend |
+| Presentation Deck   | Included in Hackathon Submission                                  |
+| Theme               | Agent Swarms                                                      |
+| Team                | Chirag)'s Team                                                    |
+
+
 ### Workflow
 
 1. The user provides a GitHub repository and error logs.
@@ -233,3 +246,67 @@ python -m cli.main test-file my_script.py --no-auto-run
 ```bash
 python -m cli.main test-file my_script.py -v
 ```
+
+# Demo Screenshots
+
+## Dashboard
+
+![Dashboard](screenshots/1.png)
+
+---
+
+## Repository Analysis
+
+![Repository Analysis](screenshots/2.png)
+
+---
+
+## Agent Swarm Execution
+
+![Agent Swarm](screenshots/3.png)
+
+---
+
+## Root Cause Analysis
+
+![Root Cause](screenshots/4.png)
+
+---
+
+## Generated Fix
+
+![Generated Fix](screenshots/5.png)
+
+---
+
+## Regression Testing
+
+![Testing](screenshots/6.png)
+
+---
+
+## Validation Report
+
+![Validation](screenshots/7.png)
+
+---
+
+# Future Enhancements
+
+* GitHub Pull Request Integration
+* Azure DevOps Integration
+* Jira Integration
+* Kubernetes Incident Analysis
+* Autonomous Patch Deployment
+* Long-Term Agent Memory
+* Enterprise Multi-Repository Debugging
+
+---
+
+# Impact
+
+MYTHEOS demonstrates how AI Agent Swarms can automate complex engineering workflows beyond code generation.
+
+By combining investigation, reasoning, validation, and remediation into a unified autonomous system, MYTHEOS reduces debugging time, improves software reliability, and showcases the future of collaborative AI engineering systems.
+
+---
